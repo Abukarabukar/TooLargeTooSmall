@@ -10,55 +10,59 @@ public class Main {
     private static Scanner scanner;
 
     //not finished yet
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        int max = 20;
+        int min = 1;
 
-        // Scanner
-        Scanner sc = new Scanner(System.in);
-        int number = 1 + (int)(500 * Math.random());
-
-        // Number of try
-        int trys = 5;
+        int guess = range(min, max);
+        int numberOfTry = 5;
         int i;
-        int guess;
+        for (i = 1; i <= numberOfTry; i++){
+            System.out.println("Guess A number from 1 => 20");
 
-        System.out.println("Guess number from 1 => 20. You have 5 chances");
-        System.out.println("Start");
+            //Object
+            Scanner input = new Scanner(System.in);
+            int userInput = input.nextInt();
+            if (userInput < guess){
+                System.out.println("Too small " + "You have " + (numberOfTry - i));
+            }
 
-        for (i = 0; i < trys; i++) {
+            else if (userInput > guess) {
+                System.out.println("Too large " + "You have " + (numberOfTry - i));
 
+            }
 
-
-            //Input from user to guess
-           guess = sc.nextInt();
-//           trys--;
-
-
-           //if number is correct
-           if (number == guess) {
-                System.out.println("Bengo! you got the number");
-
-                //we need to stop this loop
-               break;
-
-               //check the number is less than
-                    } else if (number < guess && i != trys - 1) {
-               System.out.println("Too large. " + "You have " + (trys - i - 1) + " trys left" );
-               System.out.println("Try Again" );
-
-           }
-           else if (number > guess && i != trys - 1) {
-               System.out.println("Too small. " + "You have " + (trys - i - 1) + " trys left" );
-               System.out.println("Try Again" );
-
-           }
+            else {
+                System.out.println("Bengo! You got the number");
+                break;
+            }
 
         }
 
-        if (i == trys){
-            System.out.println("You ran out of trys");
+        if (i > numberOfTry){
+            System.out.println("I am sorry, but you are not smart");
 
-            System.out.println("The correct number was " + number);
         }
-      
     }
+        // I need a range of number from 0 - 20; Done
+        //We created a method call range and put to parameters (min, max) and we add the variable to the methods
+        // and then we have to choose our return type which "int" and then we need to linked it inside the main method.
+    public static int range (int min, int max) {
+        int range = max - min + 1;
+        int rand = (int) (Math.random() * range) + min;
+return rand;
+    }
+
+
+
+        // Establish the number; Done
+        // I need loop; Done
+        // count the number of guesses; Done
+        // scanner: Done
+        //
+
+
+
+
+
 }
